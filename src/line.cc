@@ -1,18 +1,10 @@
-#include "line.h"
+#include <graphics/line.h>
 
-Line::Line(Vector2i start, Vector2i end) {
-  start_ = start;
-  end_ = end;
-  GenerateMiddlePoints();
+Line::Line(const Vector2i& start, const Vector2i& end) : start_(start), end_(end) {
+  GeneratePoints();
 }
 
-void Line::Draw(std::vector<std::vector<char>> &buffer) const {
-  for (auto point : points_) {
-    buffer[point.y][point.x] = '*';
-  }
-}
-
-void Line::GenerateMiddlePoints() {
+void Line::GeneratePoints() {
   float m;
   float b;
 

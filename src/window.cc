@@ -1,6 +1,6 @@
 #pragma once
 
-#include "window.h"
+#include <graphics/window.h>
 
 Window::Window(int width, int height) {
   width_ = width;
