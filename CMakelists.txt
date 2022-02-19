@@ -1,14 +1,28 @@
 cmake_minimum_required(VERSION 3.2)
 
+option(TEST "Build test" OFF)
+
+project(console-graphics)
+
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(graphics STATIC)
+if (BUILD_SHARED_LIBS)
+  add_library(graphics SHARED)
+else()
+  add_library(graphics STATIC)
+endif()
 
 target_sources(graphics
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/window.cc
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/line.cc
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/triangle.cc
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/square.cc
+  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/circle.cc
 )
 
 target_include_directories(graphics PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+if (TEST)
+  add_subdirectory(test)
+endif()
+
