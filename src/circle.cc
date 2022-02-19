@@ -20,6 +20,6 @@ void Circle::GeneratePoints() {
 
     Line line(init, end);
     points_.insert(points_.end(), line.GetPoints().begin(), line.GetPoints().end());
-    acumulate_angle += angle_portions;
+
   }
 }
